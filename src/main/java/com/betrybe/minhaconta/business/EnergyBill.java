@@ -25,9 +25,9 @@ public class EnergyBill {
     if (!this.residentialPlan) {
       return 1.1 * value;
     }
-
     return value;
   }
+
   /**
    * Req. 3 – Calculates the total usage of a collection of devices.
    */
