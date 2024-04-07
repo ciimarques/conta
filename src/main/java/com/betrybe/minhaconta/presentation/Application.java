@@ -97,6 +97,18 @@ public class Application {
    * Req. 8 – Register address devices.
    */
   public void registerAddressDevices() {
+    String registration = ui.inputAddressRegistration();
+    Address address = api.findAddress(registration);
+    if (address == null) {
+      ui.showMessage("Endereço não encontrado!");
+    } else {
+      int numberOfDevices = ui.inputNumberOfDevices();
+      for (int i = 0; i < numberOfDevices; i++) {
+        ElectronicDevice device = new ElectronicDevice();
+        ui.fillDeviceData(device);
+        api.addDeviceToAddress(device, address);
+      }
+    }
   }
 
   /**
